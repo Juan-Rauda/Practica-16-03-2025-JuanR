@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "0e271e5f-9d59-4ac6-b565-23f9f6e18c23",
+		"name": "Practica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "39296869"
+	},
+	"item": [
+		{
+			"name": "Filtro",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/catalogo/productos?categoria\n",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"catalogo",
+						"productos"
+					],
+					"query": [
+						{
+							"key": "categoria\n",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregar_productos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDI0MDYxOTAsImV4cCI6MTc0MjQwOTc5MCwibmJmIjoxNzQyNDA2MTkwLCJqdGkiOiJPN0VENEx6SFZPcnR3UDdtIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlIjpbIkFkbWluIl0sInBlcm1pc3Npb25zIjpbImNyZWF0ZV9wZXJtaXNzaW9uIiwiZWRpdF9wZXJtaXNzaW9uIiwiZGVsZXRlX3Blcm1pc3Npb24iLCJ2aWV3X3Blcm1pc3Npb24iLCJjcmVhdGVfdXNlciIsImVkaXRfdXNlciIsImRlbGV0ZV91c2VyIiwidmlld191c2VyIl0sInVzZXJfaWQiOjIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBwcnVlYmEuY29tIn0.9a4Fnt9rX_sCxpO1dik0Dbc3vg-iV05g_m0f1aFzXLw"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "producto 2",
+							"type": "text"
+						},
+						{
+							"key": "precio",
+							"value": "25",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "imagen 3",
+							"type": "text"
+						},
+						{
+							"key": "cantidad",
+							"value": "18",
+							"type": "text"
+						},
+						{
+							"key": "categoria_id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": "127.0.0.1:8000/api/administracion/productos"
+			},
+			"response": []
+		},
+		{
+			"name": "sesion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDIxMzg1OTEsImV4cCI6MTc0MjE0MjE5MSwibmJmIjoxNzQyMTM4NTkxLCJqdGkiOiJCYmEySmd6STFhdDR3R1NjIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlIjpbIlN1cGVyIEFkbWluIl0sInBlcm1pc3Npb25zIjpbXSwidXNlcl9pZCI6MSwiZW1haWwiOiJzdXBlcmFkbWluQHBydWViYS5jb20ifQ.Tb4b4MOMzC_yOkodCw7aUxeaFPYhTkwtmXe-2Qhv5qI"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"administrador@prueba.com\",\r\n    \"password\":\"Admin123$\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:8000/api/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "agregar_pedido",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDIxMzg1OTEsImV4cCI6MTc0MjE0MjE5MSwibmJmIjoxNzQyMTM4NTkxLCJqdGkiOiJCYmEySmd6STFhdDR3R1NjIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlIjpbIlN1cGVyIEFkbWluIl0sInBlcm1pc3Npb25zIjpbXSwidXNlcl9pZCI6MSwiZW1haWwiOiJzdXBlcmFkbWluQHBydWViYS5jb20ifQ.Tb4b4MOMzC_yOkodCw7aUxeaFPYhTkwtmXe-2Qhv5qI"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha_pedido\":\"2025/03/16\",\r\n    \"client_id\":1,\r\n    \"detalle\":[\r\n        {\r\n            \"cantidad\":35,\r\n            \"precio\":78,\r\n            \"product_id\":1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:8000/api/pedidos"
+			},
+			"response": []
+		},
+		{
+			"name": "agregar_categoria",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDI0MDYxOTAsImV4cCI6MTc0MjQwOTc5MCwibmJmIjoxNzQyNDA2MTkwLCJqdGkiOiJPN0VENEx6SFZPcnR3UDdtIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlIjpbIkFkbWluIl0sInBlcm1pc3Npb25zIjpbImNyZWF0ZV9wZXJtaXNzaW9uIiwiZWRpdF9wZXJtaXNzaW9uIiwiZGVsZXRlX3Blcm1pc3Npb24iLCJ2aWV3X3Blcm1pc3Npb24iLCJjcmVhdGVfdXNlciIsImVkaXRfdXNlciIsImRlbGV0ZV91c2VyIiwidmlld191c2VyIl0sInVzZXJfaWQiOjIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBwcnVlYmEuY29tIn0.9a4Fnt9rX_sCxpO1dik0Dbc3vg-iV05g_m0f1aFzXLw"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "categoria 4",
+							"description": "prueba 2",
+							"type": "text"
+						}
+					]
+				},
+				"url": "127.0.0.1:8000/api/administracion/categoria"
+			},
+			"response": []
+		},
+		{
+			"name": "agregar_clientes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDI0MTkwOTYsImV4cCI6MTc0MjQyMjY5NiwibmJmIjoxNzQyNDE5MDk2LCJqdGkiOiJKZDVxMmR4eXc0MmUwTkpDIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlIjpbIkFkbWluIl0sInBlcm1pc3Npb25zIjpbImNyZWF0ZV9wZXJtaXNzaW9uIiwiZWRpdF9wZXJtaXNzaW9uIiwiZGVsZXRlX3Blcm1pc3Npb24iLCJ2aWV3X3Blcm1pc3Npb24iLCJjcmVhdGVfdXNlciIsImVkaXRfdXNlciIsImRlbGV0ZV91c2VyIiwidmlld191c2VyIl0sInVzZXJfaWQiOjIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBwcnVlYmEuY29tIn0.QHxUbrX3oaA8WSq-OjDlaaxGIV9ipgvMsf9PlUwWmGM"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"Juan\",\r\n  \"apellido\": \"Rauda\",\r\n  \"email\": \"JuanR@gmail.com\",\r\n  \"direccion_envio\": \"San Salvador\",\r\n  \"direccion_facturacion\": \"San Salvador\",\r\n  \"telefono\": \"12345678\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/api/clientes"
+			},
+			"response": []
+		},
+		{
+			"name": "get_pedidos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDI0MTk5MDYsImV4cCI6MTc0MjQyMzUwNiwibmJmIjoxNzQyNDE5OTA2LCJqdGkiOiJwWjk2OW12aG5sc2tGeXJYIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJyb2xlIjpbIkFkbWluIl0sInBlcm1pc3Npb25zIjpbImNyZWF0ZV9wZXJtaXNzaW9uIiwiZWRpdF9wZXJtaXNzaW9uIiwiZGVsZXRlX3Blcm1pc3Npb24iLCJ2aWV3X3Blcm1pc3Npb24iLCJjcmVhdGVfdXNlciIsImVkaXRfdXNlciIsImRlbGV0ZV91c2VyIiwidmlld191c2VyIl0sInVzZXJfaWQiOjIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBwcnVlYmEuY29tIn0.z3stmWIIVbvTs_kSklXh_WR6Zk8NtFm9fnoGwbH04UI"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "127.0.0.1:8000/api/pedidos"
+			},
+			"response": []
+		}
+	]
+}

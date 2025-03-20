@@ -10,25 +10,30 @@ use App\Models\MntPedidos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class MntPedidosController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         try {
-            //code...
-            $pedidos = MntPedidos::with([
-                'detallePedido.producto.categoria',
-                'cliente'
-            ])->paginate(10);
-            return ApiResponse::success('Pedidos',200,$pedidos);
+            // Obtener los pedidos solo del usuario autenticado
+            $pedidos = MntPedidos::where('client_id', Auth::id()) // Filtrar por el client_id del usuario autenticado
+                ->with([
+                    'detallePedido.producto.categoria',
+                    'cliente'
+                ])
+                ->paginate(10);
+
+            return ApiResponse::success('Pedidos', 200, $pedidos);
         } catch (\Exception $e) {
-            //throw $th;
-            return ApiResponse::error('Error al traer los pedidos '.$e->getMessage(),422);
+            return ApiResponse::error('Error al traer los pedidos: ' . $e->getMessage(), 422);
         }
     }
-    public function store(Request $request){
 
+    public function store(Request $request)
+    {
         $message = [
             "fecha_pedido.required" => "La fecha de pedido es obligatoria",
             "fecha_pedido.date" => "La fecha debe ser formato de fecha",
@@ -67,7 +72,6 @@ class MntPedidosController extends Controller
 
             if ($pedido->save()) {
                 $totalF = 0;
-                // return $request->all();
                 foreach ($request->detalle as $d) {
                     $detalle = new MntDetallePedidos();
                     $detalle->pedido_id = $pedido->id;
@@ -79,7 +83,7 @@ class MntPedidosController extends Controller
 
                     $totalF += $detalle->sub_total;
                 }
-                // return $totalF;
+
                 $pedido->total = $totalF;
                 $pedido->save();
                 DB::commit();
