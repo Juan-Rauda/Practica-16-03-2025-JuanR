@@ -18,8 +18,7 @@ class MntPedidosController extends Controller
     public function index()
     {
         try {
-            // Obtener los pedidos solo del usuario autenticado
-            $pedidos = MntPedidos::where('client_id', Auth::id()) // Filtrar por el client_id del usuario autenticado
+            $pedidos = MntPedidos::where('client_id', Auth::id())
                 ->with([
                     'detallePedido.producto.categoria',
                     'cliente'
@@ -67,7 +66,7 @@ class MntPedidosController extends Controller
             DB::beginTransaction();
 
             $pedido = new MntPedidos();
-            $pedido->fecha_pedido = $request->fecha_pedido; // Correct assignment
+            $pedido->fecha_pedido = $request->fecha_pedido;
             $pedido->client_id = $request->client_id;
 
             if ($pedido->save()) {

@@ -13,12 +13,11 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         try {
-            // Crear un cliente asociado al usuario logueado
             $cliente = MntCliente::create([
                 'nombre' => $request->nombre,
                 'apellido' => $request->apellido,
                 'email' => $request->email,
-                'user_id' => Auth::id(), // Asociamos al usuario logueado
+                'user_id' => Auth::id(),
                 'direccion_envio' => $request->direccion_envio,
                 'direccion_facturacion' => $request->direccion_facturacion,
                 'telefono' => $request->telefono,
@@ -39,7 +38,6 @@ class ClienteController extends Controller
 
     public function show($id)
     {
-        // Buscar cliente por ID
         $cliente = MntCliente::find($id);
 
         if (!$cliente) {

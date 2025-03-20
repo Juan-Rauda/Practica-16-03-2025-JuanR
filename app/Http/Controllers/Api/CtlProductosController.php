@@ -15,11 +15,9 @@ class CtlProductosController extends Controller
     public function index(Request $request)
     {
         try {
-            // Capturar filtros desde la request
             $categoriaId = $request->query('categoria_id');
             $nombre = $request->query('nombre');
 
-            // Consultar productos con relaciones
             $query = CtlProductos::with([
                 "categoria" => function ($query) {
                     $query->select(['id', 'nombre']);
@@ -27,18 +25,15 @@ class CtlProductosController extends Controller
                 "inventario"
             ]);
 
-            // Aplicar filtro por categoría si se envía el parámetro
             if ($categoriaId) {
                 $query->where('categoria_id', $categoriaId);
             }
 
-            // Aplicar filtro por nombre si se envía el parámetro
             if ($nombre) {
                 $query->where('nombre', 'like', "%$nombre%");
             }
 
-            // Paginación de resultados
-            $products = $query->paginate(10); // Asegúrate de aplicar la paginación
+            $products = $query->paginate(10);
 
             return ApiResponse::success('Lista de productos', 200, $products);
         } catch (\Exception $e) {
@@ -110,30 +105,25 @@ class CtlProductosController extends Controller
     public function getProductosFiltrados(Request $request)
     {
         try {
-            $query = CtlProductos::query(); // Asegúrate de usar el modelo correcto: CtlProductos
+            $query = CtlProductos::query();
 
-            // Filtrar por categoría si se proporciona
             if ($request->has('categoria')) {
                 $query->where('categoria_id', $request->categoria);
             }
 
-            // Filtrar por rango de precio si se proporciona
             if ($request->has('min_precio') && $request->has('max_precio')) {
                 $query->whereBetween('precio', [$request->min_precio, $request->max_precio]);
             }
 
-            // Filtrar por nombre (búsqueda parcial)
             if ($request->has('nombre')) {
                 $query->where('nombre', 'LIKE', '%' . $request->nombre . '%');
             }
 
-            // Ordenar por precio si se proporciona
             if ($request->has('orden')) {
                 $query->orderBy('precio', $request->orden);
             }
 
-            // Paginación de resultados
-            $productos = $query->paginate(10); // Asegúrate de aplicar paginación también aquí
+            $productos = $query->paginate(10);
 
             return ApiResponse::success('Productos filtrados', 200, $productos);
         } catch (\Exception $e) {
