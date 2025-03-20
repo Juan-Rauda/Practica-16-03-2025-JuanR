@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             RolSeeder::class,
             UserSeeder::class,
             CtlCategoriaSeeder::class,
-         
+            ClienteSeeder::class,
         ]);
     }
 }

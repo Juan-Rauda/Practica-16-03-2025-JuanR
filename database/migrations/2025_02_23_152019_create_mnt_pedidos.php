@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamp('fecha_pedido');
             $table->boolean('estado')->default(true);
-            $table->double('total',7,2);
+            $table->double('total',7,2)->nullable();
             $table->foreignId('client_id')->constrained('id')->on('mnt_clientes')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_mnt_pedidos');
+        Schema::dropIfExists('mnt_pedidos');
     }
 };

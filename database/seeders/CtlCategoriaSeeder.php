@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use DB;
+use Illuminate\Support\Facades\DB;
 
+// use DB;
+// use Illuminate\Support\Facades\DB as FacadesDB;
 
 class CtlCategoriaSeeder extends Seeder
 {
@@ -15,7 +17,7 @@ class CtlCategoriaSeeder extends Seeder
     public function run(): void
     {
         //
-       
+
         $data = ['Categoria 1', 'categoria 2'];
         foreach ($data as $d) {
             DB::table('ctl_categoria')->insert([
